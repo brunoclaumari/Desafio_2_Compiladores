@@ -79,9 +79,12 @@ public class Desafio {
             //Agora verifica palavra por palavra do arquivo texto se é válida ou não!
             boolean invalido = false;
             for (String linha : resp) {
-                Stack<String> pilha = new Stack<>();
 
+                Stack<String> pilha = new Stack<>();
                 String alf = "";
+
+                //Passa pela linha do arquivo salvando na string as letras correspondentes
+                //a cada símbolo
                 for (int i = 0; i < linha.length(); i++) {
                     String item = Character.toString(linha.charAt(i));
                     if (item.equals(parents.getAbre()) || item.equals(parents.getFecha())) {
@@ -90,12 +93,14 @@ public class Desafio {
                         alf += "b";
                     } else if (item.equals(chavs.getAbre()) || item.equals(chavs.getFecha())) {
                         alf += "c";
+                    } else {
+                        invalido = true;
                     }
                 }
 
                 if (s.getFechado().contains(linha.charAt(0))
                         || s.getAberto().contains(linha.charAt(linha.length() - 1))) {
-                    //System.out.println(linha);
+
                     invalido = true;
                     //linha += " - Palavra inválida - começa fechando ou termina abrindo";
 
@@ -118,16 +123,13 @@ public class Desafio {
                                 alfPos = Character.toString(alf.charAt(i));
 
                                 if (!aux.equals(alfPos)) {
-                                    //System.out.println("Palavra inválida 2");
                                     invalido = true;
                                     //linha += " - Palavra inválida 2";
                                     //linha += " - Caractere desempilhado diferente do caractere da posição esperada";
-                                    //sc.nextLine();
+
                                     break;
                                 }
                             } else if (pilha.empty() && linha.length() - i > 0) {
-                                //System.out.println("Pilha vazia e ainda falta desempilhar");
-                                // System.out.println("Palavra inválida 3");
                                 invalido = true;
                                 //linha += " - Pilha vazia e ainda falta desempilhar - Palavra inválida 3";
                                 break;
@@ -149,6 +151,7 @@ public class Desafio {
                     auxiliar.add(linha);
                 }
             }
+            //Vai criar o arquivo de resposta se caracter é válido ou inválido, na pasta "src" 
             try (PrintWriter bw = new PrintWriter(new FileWriter("prog-check.txt"))) {
                 auxiliar.stream().forEach(k -> bw.println(k));
                 //bw.append(linha);

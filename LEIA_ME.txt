@@ -1,0 +1,20 @@
+
+1-PARA COMPILAR, ir subindo o nível da pastas até o src:
+
+	Apenas exemplo:
+	E:\Users\BRUNOSILVA\Desktop\FACULDADE\COMPILADORES\ATIV. COMPILADORES PTO EXTRA		\DESAFIO_2_compiladores\src>
+
+ 	1.1 - javac desafio\Desafio.java
+
+2-PARA RODAR
+
+	2.1 - colocar arquivo "prog.txt", ou qualquer outro nome, na pasta src 
+
+	2.2 - java desafio.Desafio prog.txt
+
+
+
+
+
+
+
